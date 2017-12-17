@@ -10,15 +10,16 @@ public class Opinions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int id_book;
-
     private String nick;
 
     private String comment;
 
-    public Opinions(int id_book, String nick, String comment) {
-        this.id_book = id_book;
+    public Opinions(Book book, String nick, String comment) {
+        this.book = book;
         this.nick = nick;
         this.comment = comment;
     }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Book book;
 }

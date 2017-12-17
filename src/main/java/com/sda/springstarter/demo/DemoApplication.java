@@ -37,8 +37,8 @@ public class DemoApplication implements CommandLineRunner {
         Book bookOne = new Book("Tytuł1", "Autor1");
         Book bookTwo = new Book("Tytuł2", "Autor2");
 
-        bookService.saveBook(bookOne);
-        bookService.saveBook(bookTwo);
+//        bookService.saveBook(bookOne);
+//        bookService.saveBook(bookTwo);
 
         Shops bigShop = new Shops("Duży Sklep", "Wielka", "Warszawa");
         Shops smallShop = new Shops("Mały Sklepik", "Kręta", "Sosnowiec");
@@ -46,8 +46,8 @@ public class DemoApplication implements CommandLineRunner {
         shopsService.addShop(bigShop);
         shopsService.addShop(smallShop);
 
-        Opinions opinionOne = new Opinions(0, "Adam", "Dobra książka.Polecam");
-        Opinions opinionTwo = new Opinions(1, "CichoSza", "Nudna lektura, nie czytajcie!");
+        Opinions opinionOne = new Opinions(bookOne, "Adam", "Dobra książka.Polecam");
+        Opinions opinionTwo = new Opinions(bookTwo, "CichoSza", "Nudna lektura, nie czytajcie!");
 
         opinionsService.addOpinion(opinionOne);
         opinionsService.addOpinion(opinionTwo);

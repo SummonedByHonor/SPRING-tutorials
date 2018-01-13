@@ -1,4 +1,9 @@
 package com.sda.springstarter.demo.repository;
 
-public interface CategoriesRepository {
+import com.sda.springstarter.demo.model.Categories;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoriesRepository extends JpaRepository<Categories, Long> {
+
+    Categories findById(int id);
 }

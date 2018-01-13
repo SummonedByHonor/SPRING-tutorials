@@ -2,9 +2,10 @@ package com.sda.springstarter.demo;
 
 import com.sda.springstarter.demo.Interfaces.OpinionsService;
 import com.sda.springstarter.demo.Interfaces.ShopsService;
+import com.sda.springstarter.demo.model.Authors;
 import com.sda.springstarter.demo.model.Book;
-import com.sda.springstarter.demo.model.Opinions;
-import com.sda.springstarter.demo.model.Shops;
+import com.sda.springstarter.demo.repository.AuthorsRepository;
+import com.sda.springstarter.demo.service.AuthorsServiceImpl;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +24,12 @@ public class DemoApplication implements CommandLineRunner {
     @Autowired
     private ShopsService shopsService;
 
+    @Autowired
+    private AuthorsServiceImpl authorsService;
+
+    @Autowired
+    private AuthorsRepository authorsRepository;
+
     public static void main(String[] args) {
 
         SpringApplication.run(DemoApplication.class, args);
@@ -30,26 +37,25 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+//        Book bookOne = new Book("Tytuł1", "Autor1");
+//        Book bookTwo = new Book("Tytuł2", "Autor2");
+//
+//        Shops bigShop = new Shops("Duży Sklep", "Wielka", "Warszawa");
+//        Shops smallShop = new Shops("Mały Sklepik", "Kręta", "Sosnowiec");
+//
+//        shopsService.addShop(bigShop);
+//        shopsService.addShop(smallShop);
+//
+//        Opinions opinionOne = new Opinions(bookOne, "Adam", "Dobra książka.Polecam");
+//        Opinions opinionTwo = new Opinions(bookTwo, "CichoSza", "Nudna lektura, nie czytajcie!");
+//
+//        opinionsService.addOpinion(opinionOne);
+//        opinionsService.addOpinion(opinionTwo);
 
-//        Book bookOne = Book.builder().title("Tytuł1").author("Autor1").build();
-//        Book bookTwo = Book.builder().title("Tytuł2").author("Autor2").build();
+        Book bookOne = new Book("Strona", "");
+        Authors author = authorsRepository.findById(1);
+        bookOne.setBookAuthor(author);
 
-        Book bookOne = new Book("Tytuł1", "Autor1");
-        Book bookTwo = new Book("Tytuł2", "Autor2");
-
-//        bookService.saveBook(bookOne);
-//        bookService.saveBook(bookTwo);
-
-        Shops bigShop = new Shops("Duży Sklep", "Wielka", "Warszawa");
-        Shops smallShop = new Shops("Mały Sklepik", "Kręta", "Sosnowiec");
-
-        shopsService.addShop(bigShop);
-        shopsService.addShop(smallShop);
-
-        Opinions opinionOne = new Opinions(bookOne, "Adam", "Dobra książka.Polecam");
-        Opinions opinionTwo = new Opinions(bookTwo, "CichoSza", "Nudna lektura, nie czytajcie!");
-
-        opinionsService.addOpinion(opinionOne);
-        opinionsService.addOpinion(opinionTwo);
+        bookService.saveBook(bookOne);
     }
 }

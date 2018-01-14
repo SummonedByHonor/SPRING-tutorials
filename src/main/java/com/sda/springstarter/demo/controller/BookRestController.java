@@ -7,9 +7,13 @@ import com.sda.springstarter.demo.service.AuthorsServiceImpl;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import com.sda.springstarter.demo.service.CategoriesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/books")
@@ -55,7 +59,7 @@ public class BookRestController {
     }
 
     @GetMapping(value = "/getBookById/{id}")
-    public Book getBookById(@PathVariable int id){
-        return bookService.getBookById(id);
+    public ResponseEntity<Book> getBookById(@PathVariable int id){
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.getBookById(id));
     }
 }

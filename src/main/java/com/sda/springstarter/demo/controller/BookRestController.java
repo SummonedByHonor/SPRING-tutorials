@@ -54,7 +54,7 @@ public class BookRestController {
         categoriesService.addCategory(category);
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/getBookById/{id}")
     public Book getBookById(@PathVariable int id){
         return bookService.getBookById(id);
     }

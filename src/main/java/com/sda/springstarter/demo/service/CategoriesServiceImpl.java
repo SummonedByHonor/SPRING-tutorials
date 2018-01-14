@@ -24,5 +24,7 @@ public class CategoriesServiceImpl implements CategoriesService {
         categoriesRepository.save(category);
     }
 
-
+    public Categories getCategoryById(int id) {
+        return categoriesRepository.findById(id);
+    }
 }

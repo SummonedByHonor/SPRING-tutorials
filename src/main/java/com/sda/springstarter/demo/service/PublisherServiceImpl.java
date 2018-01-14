@@ -16,11 +16,15 @@ public class PublisherServiceImpl implements PublishersService {
 
     @Override
     public List<Publishers> getAllPublishers() {
-       return publishersRepository.findAll();
+        return publishersRepository.findAll();
     }
 
     @Override
     public void addPublisher(Publishers publisher) {
         publishersRepository.save(publisher);
+    }
+
+    public Publishers getPublisherById(int id) {
+      return publishersRepository.findById(id);
     }
 }

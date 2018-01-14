@@ -4,9 +4,13 @@ import com.sda.springstarter.demo.Interfaces.OpinionsService;
 import com.sda.springstarter.demo.Interfaces.ShopsService;
 import com.sda.springstarter.demo.model.Authors;
 import com.sda.springstarter.demo.model.Book;
+import com.sda.springstarter.demo.model.Categories;
+import com.sda.springstarter.demo.model.Publishers;
 import com.sda.springstarter.demo.repository.AuthorsRepository;
 import com.sda.springstarter.demo.service.AuthorsServiceImpl;
 import com.sda.springstarter.demo.service.BookServiceImpl;
+import com.sda.springstarter.demo.service.CategoriesServiceImpl;
+import com.sda.springstarter.demo.service.PublisherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +30,12 @@ public class DemoApplication implements CommandLineRunner {
 
     @Autowired
     private AuthorsServiceImpl authorsService;
+
+    @Autowired
+    private CategoriesServiceImpl categoriesService;
+
+    @Autowired
+    private PublisherServiceImpl publisherService;
 
     @Autowired
     private AuthorsRepository authorsRepository;
@@ -54,7 +64,12 @@ public class DemoApplication implements CommandLineRunner {
 
         Book bookOne = new Book("Strona", "");
         Authors author = authorsRepository.findById(1);
+        Categories category = categoriesService.getCategoryById(2);
+        Publishers publisher = publisherService.getPublisherById(1);
         bookOne.setBookAuthor(author);
+        bookOne.setBookCategory(category);
+        bookOne.setBookPublisher(publisher);
+
 
         bookService.saveBook(bookOne);
     }

@@ -46,4 +46,14 @@ public class BookRestController {
     public List<Categories> getAllCategories() {
         return categoriesService.getAllCategories();
     }
+
+    @RequestMapping(value = "/addNewAuthor", method = RequestMethod.POST)
+    public void saveAuthor(@RequestBody Authors author){
+        authorsService.addAuthor(author);
+    }
+
+    @RequestMapping(value = "/addNewCategory", method = RequestMethod.POST)
+    public void saveCategory(@RequestBody Categories category){
+        categoriesService.addCategory(category);
+    }
 }

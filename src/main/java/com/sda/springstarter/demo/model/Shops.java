@@ -1,6 +1,7 @@
 package com.sda.springstarter.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Sklepy")
@@ -10,6 +11,7 @@ public class Shops {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     private String name;
 
     private String street;

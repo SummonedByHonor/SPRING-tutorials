@@ -3,6 +3,7 @@ package com.sda.springstarter.demo.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -13,8 +14,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     private String title;
 
+    @NotNull
     private String author;
 
     @ManyToOne

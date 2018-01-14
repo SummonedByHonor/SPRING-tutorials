@@ -1,6 +1,8 @@
 package com.sda.springstarter.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Opinie")
@@ -10,8 +12,11 @@ public class Opinions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     private String nick;
 
+    @NotNull
+    @Size(min = 0, max = 1000)
     private String comment;
 
     public Opinions(Book book, String nick, String comment) {

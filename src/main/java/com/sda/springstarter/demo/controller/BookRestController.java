@@ -7,10 +7,7 @@ import com.sda.springstarter.demo.service.AuthorsServiceImpl;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import com.sda.springstarter.demo.service.CategoriesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -55,5 +52,10 @@ public class BookRestController {
     @RequestMapping(value = "/addNewCategory", method = RequestMethod.POST)
     public void saveCategory(@RequestBody Categories category){
         categoriesService.addCategory(category);
+    }
+
+    @GetMapping(value = "{id}")
+    public Book getBookById(@PathVariable int id){
+        return bookService.getBookById(id);
     }
 }

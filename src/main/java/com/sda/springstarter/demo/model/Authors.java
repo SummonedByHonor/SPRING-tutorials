@@ -1,10 +1,11 @@
 package com.sda.springstarter.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
-@Table (name = "Autorzy")
+@Table(name = "Autorzy")
 public class Authors {
 
     @Id
@@ -14,15 +15,14 @@ public class Authors {
 
     private String adress;
 
-
+    @NotNull
     private String name;
 
-
+    @NotNull
     private String lastname;
 
     @OneToMany(mappedBy = "bookAuthor", cascade = CascadeType.ALL)
     private Set<Book> setOfBooks;
-
 
 
     public Authors(String name, String adress, String lastname, Set<Book> setOfBooks) {

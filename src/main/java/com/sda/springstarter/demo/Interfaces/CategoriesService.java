@@ -9,4 +9,6 @@ public interface CategoriesService {
     List<Categories> getAllCategories();
 
     void addCategory(Categories category);
+
+
 }

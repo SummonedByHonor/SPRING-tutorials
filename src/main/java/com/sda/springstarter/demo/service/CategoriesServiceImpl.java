@@ -23,4 +23,6 @@ public class CategoriesServiceImpl implements CategoriesService {
     public void addCategory(Categories category) {
         categoriesRepository.save(category);
     }
+
+
 }

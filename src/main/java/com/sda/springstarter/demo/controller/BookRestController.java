@@ -8,12 +8,10 @@ import com.sda.springstarter.demo.service.BookServiceImpl;
 import com.sda.springstarter.demo.service.CategoriesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/books")
@@ -28,6 +26,7 @@ public class BookRestController {
     @Autowired
     private CategoriesServiceImpl categoriesService;
 
+    @CrossOrigin(value = "http://localhost:9999")
     @RequestMapping(value = "getBookList", method = RequestMethod.GET)
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
@@ -49,17 +48,22 @@ public class BookRestController {
     }
 
     @RequestMapping(value = "/addNewAuthor", method = RequestMethod.POST)
-    public void saveAuthor(@RequestBody Authors author){
+    public void saveAuthor(@RequestBody Authors author) {
         authorsService.addAuthor(author);
     }
 
     @RequestMapping(value = "/addNewCategory", method = RequestMethod.POST)
-    public void saveCategory(@RequestBody Categories category){
+    public void saveCategory(@RequestBody Categories category) {
         categoriesService.addCategory(category);
     }
 
     @GetMapping(value = "/getBookById/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable int id){
+    public ResponseEntity<Book> getBookById(@PathVariable int id) {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.getBookById(id));
+    }
+
+    @GetMapping(value = "/getAuthorById/{id}")
+    public ResponseEntity<Authors> getAuthorById(@PathVariable int id) {
+        return ResponseEntity.status(HttpStatus.OK).body(authorsService.getAuthorById(id));
     }
 }

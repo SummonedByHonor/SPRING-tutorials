@@ -38,7 +38,7 @@ public class DemoApplication implements CommandLineRunner {
     private PublisherServiceImpl publisherService;
 
     @Autowired
-    private AuthorsRepository authorsRepository;
+    private AuthorsServiceImpl authorsRepository;
 
     public static void main(String[] args) {
 
@@ -50,7 +50,7 @@ public class DemoApplication implements CommandLineRunner {
 
 
         Book bookOne = new Book("Strona", "");
-        Authors author = authorsRepository.findById(1);
+        Authors author = authorsRepository.getAuthorById(1);
         Categories category = categoriesService.getCategoryById(2);
         Publishers publisher = publisherService.getPublisherById(1);
         bookOne.setBookAuthor(author);

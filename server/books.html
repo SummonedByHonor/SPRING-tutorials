@@ -1,0 +1,46 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        console.log("dziala");
+
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost:8080/books/getBookList",
+            success: function (result) {
+                console.log(result);
+                $.each(result, function (key, value) {
+                  console.log(key);
+                  if (!jQuery.isEmptyObject(value.bookCategory)){
+                      console.log(value.bookCategory.name);
+                  }
+                  $("ul").append("<li>" + value['title'] + "</li>");
+                })
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+       $("#dodaj").click(function () {
+           var title = $("#title").val();
+           console.log(title);
+       })
+           
+    });
+
+
+</script>
+<body>
+<form>
+    Tytul:
+    <input id="title" type="text">
+    <input type="button" id="dodaj" value="Dodaj">
+</form>
+<ul>
+
+</ul>
+
+</body>
+</html>

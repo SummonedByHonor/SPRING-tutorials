@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html
-      xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org">
 <head>
     <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -12,7 +12,7 @@
 
     <h1>Lista ksiazek</h1>
 
-    <table>
+    <table cellspacing="20" border="1">
         <tr>
             <th>Tytul</th>
             <th>Autor</th>
@@ -21,12 +21,34 @@
 
         <tr th:each="book : ${booklister}">
             <td th:text="${book.getTitle()}"></td>
-            <td th:text="${book.getBookPublisher()}"></td>
-            <td th:text="${book.getBookAuthor()}"></td>
+            <td th:text="${book.getBookPublisher().getName()}"></td>
+            <td th:text="${book.getBookAuthor().getName()}"></td>
         </tr>
 
     </table>
 
+    <form action="#" th:action="@{/addbook}" th:object="${book}" method="post">
+        <label>Podaj Wydawnictwo</label>
+        <select th:field="*{bookPublisher.id}">
+            <option th:each="pub : ${publisherlister}"
+                    th:value="${pub.getId()}"
+                    th:text="${pub.getName()}"></option>
+
+        </select>
+        <label>Podaj Gatunek</label>
+        <select th:field="*{bookCategory.id}">
+            <option th:each="cat : ${categorieslister}"
+                    th:value="${cat.getId()}"
+                    th:text="${cat.getName()}"></option>
+        </select>
+
+        <label>Podaj Autora</label>
+        <select th:field="*{bookAuthor.id}">
+            <option th:each="author : ${authorlister}"
+                    th:value="${author.getId()}"
+                    th:text="${author.getName()}"></option>
+        </select>
+    </form>
 </div>
 </body>
 </html>

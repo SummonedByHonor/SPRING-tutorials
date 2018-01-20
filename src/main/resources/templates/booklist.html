@@ -27,7 +27,10 @@
 
     </table>
 
-    <form action="#" th:action="@{/addbook}" th:object="${book}" method="post">
+    <h1>Dodaj nowa ksiazke</h1>
+    <form action="#" th:action="@{/addBook}" th:object="${book}" method="post">
+        <p>Nazwa ksiazki: <input type="text" th:field="*{title}"/></p>
+        <p>Autor: <input type="text" th:field="*{bookAuthor.name}"/></p>
         <label>Podaj Wydawnictwo</label>
         <select th:field="*{bookPublisher.id}">
             <option th:each="pub : ${publisherlister}"
@@ -42,12 +45,15 @@
                     th:text="${cat.getName()}"></option>
         </select>
 
-        <label>Podaj Autora</label>
-        <select th:field="*{bookAuthor.id}">
-            <option th:each="author : ${authorlister}"
-                    th:value="${author.getId()}"
-                    th:text="${author.getName()}"></option>
-        </select>
+        <!--<label>Podaj Autora</label>-->
+        <!--<select th:field="*{bookAuthor.id}">-->
+            <!--<option th:each="author : ${authorlister}"-->
+                    <!--th:value="${author.getId()}"-->
+                    <!--th:text="${author.getName()}"></option>-->
+        <!--</select>-->
+
+        <p><input type="submit"  value="Submit"/>
+        <input type="reset" value="Reset"/> </p>
     </form>
 </div>
 </body>

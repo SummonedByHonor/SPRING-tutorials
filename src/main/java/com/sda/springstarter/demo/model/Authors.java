@@ -15,21 +15,19 @@ public class Authors {
 
     private String adress;
 
-    @NotNull
+
     private String name;
 
-    @NotNull
+
     private String lastname;
 
     @OneToMany(mappedBy = "bookAuthor", cascade = CascadeType.ALL)
     private Set<Book> setOfBooks;
 
-
-    public Authors(String name, String adress, String lastname, Set<Book> setOfBooks) {
+    public Authors(String name, String adress, String lastname){
         this.name = name;
         this.adress = adress;
         this.lastname = lastname;
-        this.setOfBooks = setOfBooks;
     }
 
     public String getAdress() {
@@ -66,4 +64,6 @@ public class Authors {
     public void setId(int id) {
         this.id = id;
     }
+
+
 }

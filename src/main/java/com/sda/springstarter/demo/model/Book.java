@@ -14,10 +14,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+
     private String title;
 
-    @NotNull
+
     private String author;
 
     @ManyToOne
@@ -37,9 +37,8 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String author, Authors bookAuthor, Categories bookCategory, Publishers bookPublisher) {
+    public Book(String title, Authors bookAuthor, Categories bookCategory, Publishers bookPublisher) {
         this.title = title;
-        this.author = author;
         this.bookAuthor = bookAuthor;
         this.bookCategory = bookCategory;
         this.bookPublisher = bookPublisher;

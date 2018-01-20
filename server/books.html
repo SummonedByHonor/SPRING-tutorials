@@ -2,6 +2,8 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+
+
 <script>
     $(document).ready(function () {
         console.log("dziala");
@@ -23,11 +25,27 @@
                 console.log(error);
             }
         })
+
        $("#dodaj").click(function () {
            var title = $("#title").val();
            console.log(title);
+
+           $.ajax({
+               type: 'POST',
+               url: "http://localhost:8080/books/addNewBook",
+               data: JSON.stringify({
+                   "title": $("#title").val()}),
+               contentType: "application/json",
+               dataType: "json",
+               success: function (response) {
+                   console.log("Sukces: " + response);
+               },
+               error: function (err) {
+                   console.log("Error :(" + err);
+               }
+           })
        })
-           
+
     });
 
 
